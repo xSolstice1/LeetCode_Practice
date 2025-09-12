@@ -10,7 +10,7 @@ public:
         }
 
         for (int i=index; i<num.size(); i++) {
-            if (i != index && num[index] == 0) break; //leading zero
+            if (i != index && num[index] == '0') break; //leading zero
 
             string curSub = num.substr(index,i-index+1);
             long curEval = stol(curSub);
