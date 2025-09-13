@@ -9,17 +9,17 @@ public:
 
             if (nums[mid]==target) return mid;
 
-            if (nums[mid] >= nums[left]) {
-                if (nums[left] <= target && nums[mid] > target) {
-                    right=mid-1;
+            if (nums[mid] >= nums[left]) { //left side sorted
+                if (nums[left] <= target && target < nums[mid]) {
+                    right=mid-1; //target in left half
                 } else {
-                    left=mid+1;
+                    left=mid+1; //target in right half
                 }
-            } else {
-                if (nums[right] >= target && nums[mid] < target) {
-                    left=mid+1;
+            } else { //right side sorted
+                if (nums[mid] < target && target <= nums[right]) {
+                    left=mid+1; //target in right half
                 } else {
-                    right=mid-1;
+                    right=mid-1; //target in left half
                 }
             }
         }
