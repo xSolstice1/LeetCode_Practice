@@ -1,12 +1,5 @@
--- Write your PostgreSQL query statement below
-SELECT
-    MAX(SALARY) AS SecondHighestSalary
-FROM
-    (SELECT
-        SALARY,
-        DENSE_RANK() OVER (ORDER BY SALARY DESC) AS RNK
-    FROM
-        EMPLOYEE
-    )
-WHERE
-    RNK = 2;
+# Write your MySQL query statement below
+SELECT COALESCE((SELECT DISTINCT salary
+FROM Employee
+ORDER BY salary DESC
+LIMIT 1 OFFSET 1),NULL) AS SecondHighestSalary
