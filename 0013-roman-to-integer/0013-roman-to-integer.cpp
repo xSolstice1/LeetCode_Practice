@@ -12,18 +12,13 @@ public:
         map['D'] = 500;
         map['M'] = 1000;
 
-        for (int i=0; i<s.length(); i++)
-        {
-            if(map[s[i]] < map[s[i+1]])
-            {
+        for (int i = 0; i < s.size(); i++) {
+            if (i + 1 < s.size() && map[s[i]] < map[s[i + 1]]) {
                 result -= map[s[i]];
-            }
-            else
-            {
+            } else {
                 result += map[s[i]];
             }
         }
-
         return result;
     }
 };
