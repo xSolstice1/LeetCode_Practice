@@ -1,19 +1,13 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        int ans = 0;
-        int maxLeft = INT_MIN; //max height to left
-        int maxRight = INT_MIN; //max height to right
-        int left = 0; //left pointer
-        int right = height.size()-1; //right pointer
+        int ans = 0, left = 0, right = height.size()-1, maxLeft = INT_MIN, maxRight = INT_MIN;
 
-        while (left<right) {
-            //update max left/right heights
+        while (left < right) {
             maxLeft = max(height[left],maxLeft);
             maxRight = max(height[right],maxRight);
 
-            //update answer, check if left or right pointer is the limiting wall, move the pointer accordingly
-            ans += maxLeft<maxRight ? maxLeft-height[left++] : maxRight-height[right--];
+            ans += maxLeft < maxRight ? maxLeft - height[left++] : maxRight - height[right--];
         }
 
         return ans;
