@@ -1,35 +1,31 @@
 class Solution {
 public:
-    void backtrack(string digits, unordered_map<char,vector<char>> mp, string curr, vector<string>& res) {
-        if (curr.size() == digits.size()) {
-            res.push_back(curr);
+    void backtrack(vector<string>& res, string& w, string& digits, int idx, unordered_map<char,string>& mp) {
+        if (w.size() == digits.size()) {
+            res.push_back(w);
             return;
         }
 
-        char digit = digits[curr.size()];
-
-        for (char c:mp[digit]) {
-            backtrack(digits,mp,curr+c,res);
+        string letters = mp[digits[idx]];
+        for (char c : letters) {
+            w.push_back(c);
+            backtrack(res, w, digits, idx+1, mp);
+            w.pop_back();
         }
     }
+
     vector<string> letterCombinations(string digits) {
-        if (digits == "" || digits == "1") return {};
+        if (digits.empty()) return {};
         
-        string curr = "";
-        vector<string> res;
-        unordered_map<char, vector<char>> mp = {
-            {'2', {'a','b','c'}},
-            {'3', {'d','e','f'}},
-            {'4', {'g','h','i'}},
-            {'5', {'j','k','l'}},
-            {'6', {'m','n','o'}},
-            {'7', {'p','q','r','s'}},
-            {'8', {'t','u','v'}},
-            {'9', {'w','x','y','z'}}
+        unordered_map<char,string> mp = {
+            {'2',"abc"}, {'3',"def"},
+            {'4',"ghi"}, {'5',"jkl"}, {'6',"mno"},
+            {'7',"pqrs"}, {'8',"tuv"}, {'9',"wxyz"}
         };
 
-        backtrack(digits,mp,curr,res);
-
+        vector<string> res;
+        string w;
+        backtrack(res, w, digits, 0, mp);
         return res;
     }
 };
