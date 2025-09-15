@@ -9,7 +9,7 @@
 
 class Solution {
 public:
-    int guessNumber(int n) {
+    int guessNumber(int& n) {
         int left = 1, right = n;
 
         while (left < right) {
