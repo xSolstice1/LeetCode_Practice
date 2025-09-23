@@ -5,10 +5,12 @@ public:
 
         for (int x:nums) {
             mp[x]++;
-            //check if int x has more than 1 count
-            if (mp[x] > 1) {
+        }
+
+        for (auto itr:mp) {
+            if (itr.second > 1) {
                 return true;
-            }
+            } 
         }
 
         return false;
