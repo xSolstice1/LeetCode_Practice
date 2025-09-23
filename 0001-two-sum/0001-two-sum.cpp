@@ -4,13 +4,13 @@ public:
         unordered_map<int,int> mp;
 
         for (int i=0; i<nums.size(); i++) {
-            int temp = target-nums[i]; //find target's complement
+            int temp = target-nums[i];
 
-            if (mp.find(temp) != mp.end()) { //look for complement in map
-                return {mp[temp],i};
+            if (mp.count(temp)) {
+                return {i,mp[temp]};
             }
 
-            mp[nums[i]] = i; //map complement to index
+            mp[nums[i]]=i;
         }
 
         return {};
