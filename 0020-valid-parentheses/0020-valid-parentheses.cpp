@@ -1,22 +1,21 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> charStack;
+        stack<char> st;
+        unordered_map<char,char> mp = {{'(',')'},{'[',']'},{'{','}'}};
 
-        for (char c:s) {
-            if (c == '(' || c == '[' || c == '{') { //open parenthesis
-                charStack.push(c);
-            } else {
-                //check for false conditions (i.e. mismatch closing parenthesis)
-                if ((charStack.empty() || charStack.top() == '(' && c != ')') || (charStack.top() == '[' && c != ']') ||
-                (charStack.top() == '{' && c != '}')) {
-                    return false;
-                } else {
-                    charStack.pop(); //parenthesis closed
-                }
+        for (char c : s) {
+            //if it's an opening bracket, push
+            if (mp.count(c)) {
+                st.push(c);
+            } 
+            //if it's a closing bracket, check match
+            else {
+                if (st.empty() || mp[st.top()] != c) return false;
+                st.pop();
             }
         }
 
-        return charStack.empty(); //everything closed?
+        return st.empty();
     }
 };
