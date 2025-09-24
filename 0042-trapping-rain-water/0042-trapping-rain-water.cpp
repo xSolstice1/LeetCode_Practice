@@ -1,13 +1,13 @@
 class Solution {
 public:
     int trap(vector<int>& height) {
-        int ans = 0, left = 0, right = height.size()-1, maxLeft = INT_MIN, maxRight = INT_MIN;
+        int l=0, r=height.size()-1, maxL=INT_MIN, maxR=INT_MIN, ans=0;
 
-        while (left < right) {
-            maxLeft = max(height[left],maxLeft);
-            maxRight = max(height[right],maxRight);
+        while (l<r) {
+            maxL = max(maxL,height[l]);
+            maxR = max(maxR,height[r]);
 
-            ans += maxLeft < maxRight ? maxLeft - height[left++] : maxRight - height[right--];
+            ans += maxL < maxR ? maxL - height[l++] : maxR - height[r--];
         }
 
         return ans;
