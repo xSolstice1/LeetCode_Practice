@@ -18,17 +18,37 @@ public:
         //     j--;
         // }
         // return s;
-        string vowels = "aeiouAEIOU";
-        int i=0, j=s.length()-1;
+        
+        //string lookup
+        // string vowels = "aeiouAEIOU";
+        // int i=0, j=s.length()-1;
 
-        while (i<j) {
-            while (i<j && vowels.find(s[i]) == string::npos) {
+        // while (i<j) {
+        //     while (i<j && vowels.find(s[i]) == string::npos) {
+        //         i++;
+        //     }
+        //     while (i<j && vowels.find(s[j]) == string::npos) {
+        //         j--;
+        //     }
+        //     swap(s[i],s[j]);
+        //     i++;
+        //     j--;
+        // }
+
+        // return s;
+
+        //set lookup
+        unordered_set<char> vowels = {'a','e','i','o','u','A','E','I','O','U'};
+        int i = 0, j = s.length() - 1;
+
+        while (i < j) {
+            while (i < j && vowels.find(s[i]) == vowels.end()) {
                 i++;
             }
-            while (i<j && vowels.find(s[j]) == string::npos) {
+            while (i < j && vowels.find(s[j]) == vowels.end()) {
                 j--;
             }
-            swap(s[i],s[j]);
+            swap(s[i], s[j]);
             i++;
             j--;
         }
