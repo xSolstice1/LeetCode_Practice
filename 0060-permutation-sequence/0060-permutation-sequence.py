@@ -1,21 +1,7 @@
 class Solution:
     def getPermutation(self, n: int, k: int) -> str:
-        # nums = [i for i in range(n)]
-        # for i in range(1,k):
-        #     sure
-            
-            
-            
-            
-        
-        
-        
-        # come lets try, i comment urs first? fk py
-        
-        
-        
         nums = [i+1 for i in range(n)] #get all nums
-        factors = [1] * (n+1) #all factors
+        factors = [1] * (n+1) #all factors/permutations
 
         for i in range(1,n+1):
             factors[i] = factors[i-1]*i
@@ -31,5 +17,4 @@ class Solution:
             nums.pop(ind)
             
         return "".join(res)
-        
         
