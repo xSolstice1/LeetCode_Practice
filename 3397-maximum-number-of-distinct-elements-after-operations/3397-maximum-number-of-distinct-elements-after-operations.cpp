@@ -7,6 +7,7 @@ public:
         int curr = INT_MIN;
 
         for (int x:nums) {
+            if (x+k<=curr) continue;
             int candidate = max(x-k,curr+1);
             if (candidate <= x+k) {
                 res++;
